@@ -19,7 +19,10 @@ namespace W1HW.Controllers
         {
             return View(db.客戶資料.ToList());
         }
-
+        public ActionResult v_Relation()
+        {
+            return View(db.V_Relation.ToList());
+        }
         // GET: 客戶資料/Details/5
         public ActionResult Details(int? id)
         {
