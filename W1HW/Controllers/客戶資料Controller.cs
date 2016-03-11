@@ -15,9 +15,16 @@ namespace W1HW.Controllers
         private CustomerDataEntities db = new CustomerDataEntities();
 
         // GET: 客戶資料
-        public ActionResult Index()
+        public ActionResult Index(String keyword)
         {
-            return View(db.客戶資料.Where(p => p.是否已刪除==false).ToList());
+            var data = db.客戶資料.Where(p => p.是否已刪除 == false).AsQueryable();
+
+            if (!String.IsNullOrEmpty(keyword))
+            {
+                data = data.Where(p => p.客戶名稱.Contains(keyword));
+            }
+
+            return View(data.ToList());
         }
         public ActionResult v_Relation()
         {
