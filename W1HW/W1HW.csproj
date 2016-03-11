@@ -228,6 +228,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CustomerData.edmx</DependentUpon>
     </Compile>
+    <Compile Include="EFGeneratePartialClass.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EFGeneratePartialClass.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -239,14 +244,26 @@
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>CustomerData.tt</DependentUpon>
     </Compile>
+    <Compile Include="sysdiagrams.Partial.cs">
+      <DependentUpon>EFGeneratePartialClass.tt</DependentUpon>
+    </Compile>
     <Compile Include="客戶聯絡人.cs">
       <DependentUpon>CustomerData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="客戶聯絡人.Partial.cs">
+      <DependentUpon>EFGeneratePartialClass.tt</DependentUpon>
     </Compile>
     <Compile Include="客戶資料.cs">
       <DependentUpon>CustomerData.tt</DependentUpon>
     </Compile>
+    <Compile Include="客戶資料.Partial.cs">
+      <DependentUpon>EFGeneratePartialClass.tt</DependentUpon>
+    </Compile>
     <Compile Include="客戶銀行資訊.cs">
       <DependentUpon>CustomerData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="客戶銀行資訊.Partial.cs">
+      <DependentUpon>EFGeneratePartialClass.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -261,6 +278,10 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>CustomerData.edmx</DependentUpon>
       <LastGenOutput>CustomerData.cs</LastGenOutput>
+    </Content>
+    <Content Include="EFGeneratePartialClass.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EFGeneratePartialClass.cs</LastGenOutput>
     </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
