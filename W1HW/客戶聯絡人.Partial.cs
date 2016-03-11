@@ -1,14 +1,37 @@
 namespace W1HW
 {
     using System;
+    using System.Linq;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    
+
     [MetadataType(typeof(客戶聯絡人MetaData))]
-    public partial class 客戶聯絡人
+    public partial class 客戶聯絡人 : IValidatableObject
     {
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            var db = new CustomerDataEntities();
+
+            if (this.Id ==0)
+            {
+                if(db.客戶聯絡人.Where(p => p.客戶Id==this.客戶Id && p.Email == this.Email).Any())
+                {
+
+                    yield return new ValidationResult("Email已存在", new String[] { "Email" });
+                }
+            }
+            else
+            {
+                if (db.客戶聯絡人.Where(p => p.客戶Id == this.客戶Id && p.Email == this.Email).Any())
+                {
+
+                    yield return new ValidationResult("Email已存在", new String[] { "Email" });
+                }
+            }
+            yield return ValidationResult.Success;
+        }
     }
-    
+
     public partial class 客戶聯絡人MetaData
     {
         [Required]
