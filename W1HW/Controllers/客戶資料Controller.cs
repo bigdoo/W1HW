@@ -17,7 +17,7 @@ namespace W1HW.Controllers
         // GET: 客戶資料
         public ActionResult Index()
         {
-            return View(db.客戶資料.ToList());
+            return View(db.客戶資料.Where(p => p.是否已刪除==false).ToList());
         }
         public ActionResult v_Relation()
         {
@@ -30,7 +30,8 @@ namespace W1HW.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            客戶資料 客戶資料 = db.客戶資料.Find(id);
+            //客戶資料 客戶資料 = (客戶資料)db.客戶資料.Where(p => p.是否已刪除 == false && p.Id == id);
+            客戶資料 客戶資料 =db.客戶資料.Find(id);
             if (客戶資料 == null)
             {
                 return HttpNotFound();
@@ -113,7 +114,8 @@ namespace W1HW.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             客戶資料 客戶資料 = db.客戶資料.Find(id);
-            db.客戶資料.Remove(客戶資料);
+            //db.客戶資料.Remove(客戶資料);
+            客戶資料.是否已刪除 = true;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
