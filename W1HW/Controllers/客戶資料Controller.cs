@@ -37,8 +37,8 @@ namespace W1HW.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            //客戶資料 客戶資料 = (客戶資料)db.客戶資料.Where(p => p.是否已刪除 == false && p.Id == id);
-            客戶資料 客戶資料 =db.客戶資料.Find(id);
+            客戶資料 客戶資料 = db.客戶資料.FirstOrDefault(p => p.是否已刪除 == false && p.Id == id);
+            //客戶資料 客戶資料 =db.客戶資料.Find(id);
             if (客戶資料 == null)
             {
                 return HttpNotFound();

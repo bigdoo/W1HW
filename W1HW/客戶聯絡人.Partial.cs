@@ -12,9 +12,9 @@ namespace W1HW
         {
             var db = new CustomerDataEntities();
 
-            if (this.Id ==0)
+            if (this.Id == 0)
             {
-                if(db.客戶聯絡人.Where(p => p.客戶Id==this.客戶Id && p.Email == this.Email).Any())
+                if (db.客戶聯絡人.Where(p => p.客戶Id == this.客戶Id && p.Email == this.Email).Any())
                 {
 
                     yield return new ValidationResult("Email已存在", new String[] { "Email" });
@@ -52,7 +52,7 @@ namespace W1HW
         public string Email { get; set; }
         
         [StringLength(50, ErrorMessage="欄位長度不得大於 50 個字元")]
-        [RegularExpression(@"\d{4}-\d{6}",ErrorMessage = "e.g. 0911-111111")]
+        [RegularExpression(@"\d{4}-\d{6}", ErrorMessage = "e.g. 0911-111111")]
         public string 手機 { get; set; }
         
         [StringLength(50, ErrorMessage="欄位長度不得大於 50 個字元")]
